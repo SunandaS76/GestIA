@@ -64,6 +64,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Interference process
         label_detected = self.inferenceObject.processFrame(self.frame)
         self.label.setText("Detection: " + label_detected)
+        if (label_detected != "nothing"):
+            print(label_detected, '\n')
+
+        if(label_detected == "fist"):
+            keyboard.press_and_release('Caps lock')
+        if(label_detected == "palm_close"):
+            keyboard.press_and_release("Percent")
 
         # Process image to show on QtGui
         image = QtGui.QImage(self.frame, self.frame.shape[1], self.frame.shape[0],
@@ -76,26 +83,32 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def updateFist(self):
         action = self.__update_actions('fist')
+        print('fist 1')
         self.actionFist.setText(action)
 
     def updateDaddyF(self):
         self.actionDaddyF.setText("PRESS ANY KEY")
+        print('fist 1')
         self.actionDaddyF.setText(self.__update_actions('daddy_finger'))
 
     def updatePalmC(self):
         self.actionPalmC.setText("PRESS ANY KEY")
+        print('fist 1')
         self.actionPalmC.setText(self.__update_actions('palm_close'))
 
     def updatePalmO(self):
         self.actionPalmO.setText("PRESS ANY KEY")
+        print('fist 1')
         self.actionPalmO.setText(self.__update_actions('palm_open'))
 
     def updateThumbsU(self):
         self.actionThumbsU.setText("PRESS ANY KEY")
+        print('fist 1')
         self.actionThumbsU.setText(self.__update_actions('thumbs_up'))
 
     def updateThumbsD(self):
         self.actionThumbsD.setText("PRESS ANY KEY")
+        print('fist 1')
         self.actionThumbsD.setText(self.__update_actions('thumbs_down'))
 
     def __update_actions(self, gesture):
